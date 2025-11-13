@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Converter</title>
+    <style>
+    body{
+        background-color: black;
+        color:white;
+    }
+    header{
+        border-bottom: 1.5px  solid whitesmoke;
+        background: linear-gradient(135deg,#402f75 0%, #275288 50%, #146849 100%);
+    }
+    .home img {
+        width:8vh;
+        min-width:13%;
+        height: auto;
+        padding:1px;
+    }
+    h1{
+        font-size:350%;
+        text-align: center;
+        padding-top: 5px;
+    }
+
+    section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+    input[type="file"]{
+        background-color: blanchedalmond;
+        color: black;
+        padding: 50px 65px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size:18px;
+    }
+    #convertBtn{
+        align-items: center;
+        border-radius: 25px;
+        background-color:aquamarine;    
+        cursor:pointer;
+        font-weight:bold;
+        padding:25px 40px;
+        font-size: 18px;
+        transition: background-color 0.4s;
+    }
+    #convertBtn:hover {
+        background-color:rgb(80, 187, 151)
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 40px;
+        background-color: black;
+        color: white;
+        border-bottom: 1.5px solid whitesmoke;
+    }
+    header ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+        }
+    header ul li button {
+        background-color: transparent;
+        border: 1.5px solid white;
+        border-radius: 8px;
+        padding: 8px 15px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        background-color: black;
+    }
+    header ul li button a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    header ul li button:hover {
+        background-color: white;
+    }
+    header ul li button:hover a {
+        color: black;
+    }
+    footer {
+      margin-top: 250px;
+      text-align: center;
+      color: gray;
+      font-size: 13px;
+    }
+    </style>
+</head>
+    <body>
+        <header>
+            <a href="index.html" class="home">
+                <img src="logo.svg" alt="home">
+            </a>
+            <ul>
+                <li>
+                    <button>
+                        <a href="https://github.com/minirang">Github 프로필</a>
+                    </button>
+                </li>
+                <li>
+                    <button>
+                        <a href="https://minirang.github.io"> HTML 실행기</a>
+                    </button>
+                </li>
+                <li>
+                    <button>
+                        <a href="https://minirang.github.io/PDF-to-TXT-Converter.io/">File Converter</a>
+                    </button>
+                </li>
+                <li>
+                    <button>
+                        <a href="https://naver.me/xHi9nlTe">엔트리 프로필</a>
+                    </button>
+                </li>
+            </ul>
+        </header>
+    <h1>
+        <center>
+            <strong>PDF to TXT File<br>converter</strong>
+        </center>
+    </h1>
+    <div class="file">
+        <section>
+            <input type="file" id="file_upload">
+            <button id="convertBtn">Convert</button>
+            <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.16.105/build/pdf.min.js"></script>
+            <script>
+            const fileInput = document.getElementById('file_upload');
+            const convertBtn = document.getElementById('convertBtn');
+            convertBtn.addEventListener('click', () => {
+                const file = fileInput.files[0];
+                if (!file) return alert("PDF 파일을 선택해주세요.");
+                if (file.type !== "application/pdf") return alert("PDF 파일만 지원합니다.");
+                const reader = new FileReader();
+                convertBtn.textContent = "converting";
+                reader.onload = async (e) => {
+                    try {
+                        const pdfData = new Uint8Array(e.target.result);
+                        const loadingTask = pdfjsLib.getDocument({ data: pdfData, disableWorker: true });
+                        const pdf = await loadingTask.promise;
+                        let fullText = "";
+                        for (let i = 1; i <= pdf.numPages; i++) {
+                            const page = await pdf.getPage(i);
+                            const content = await page.getTextContent();
+                            const pageText = content.items.map(item => item.str).join(" ");
+                            fullText += pageText + "\n\n";
+                        }
+                        if (!fullText.trim()) {
+                            alert("PDF에서 추출된 텍스트가 없습니다.");
+                            return;
+                        }
+                        const blob = new Blob([fullText], { type: "text/plain" });
+                        const a = document.createElement("a");
+                        a.href = URL.createObjectURL(blob);
+                        a.download = file.name.replace(/\.pdf$/i, ".txt");
+                        a.click();
+                        URL.revokeObjectURL(a.href);
+                        alert("변환 완료! TXT 파일 다운로드가 시작됩니다.");
+                        convertBtn.textContent = "convert";
+                        } catch (err) {
+                        console.error(err);
+                        alert("PDF 변환 중 오류가 발생했습니다.");
+                    }
+                };
+                reader.readAsArrayBuffer(file);
+            });
+            </script>
+        </section>
+    </div>
+    <footer>
+        © 2025 minirang - website
+    </footer>
+</body>
+</html>
