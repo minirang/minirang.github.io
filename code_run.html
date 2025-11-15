@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="ko">
+<head>
 <meta charset="UTF-8">
 <meta http equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><html lang="ko">
-  <head>
     <title>HTML Code Runner</title>
+    <link rel="icon" type="image/ico" href="favicon.ico"/>
+    <link rel="manifest" href="manifest.json">
   <style>
   .run_button button {
-  background-color: #72cf76;
+  background-color: #83ee89;
   border: none;
-  color: white;
+  color: black;
   padding: 8px 16px;
   font-size: 15px;
   border-radius: 9px;
   cursor:pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
+  .run_button button:hover{
+    background-color: #3d7e40;
+    color:white;
+  }
   textarea {
   border-radius: 15px;
   font-size: 15px;
@@ -134,6 +141,11 @@
                 <li>
                     <button>
                         <a href="convert.html">File Converter</a>
+                    </button>
+                </li>
+                <li>
+                    <button>
+                        <a href="extensitions.html">Extensitions</a>
                     </button>
                 </li>
                 <li>
