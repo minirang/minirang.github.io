@@ -76,6 +76,7 @@
         font-size: 80px;
         margin-top: -53px;
         background: linear-gradient(45deg, #ff6b6b, #5f27cd);
+        /*다른 브라우저 호환 코드 포함*/
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         -webkit-text-fill-color: transparent;
@@ -198,7 +199,6 @@
                 target.textContent = "";
                 charIndex = 0;
                 textIndex++;
-
                 if (textIndex >= texts.length) textIndex = 0;
                 type();
             }, delay);
