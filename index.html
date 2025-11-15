@@ -158,9 +158,55 @@
     .logo_text{
         min-width:350px;
     }
+    /*@keyframes까지 By GPT*/
+    #typing {
+        border-right: 4px solid white;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: blink 0.7s infinite;
+}
+
+    @keyframes blink {
+        0% { border-color: white; }
+        50% { border-color: transparent; }
+        100% { border-color: white; }
+}
+
         </style>
     </head>
     <body>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const texts = [
+        "Hi! I am minirang",
+        "Welcome to my website!",
+        "Enjoy your stay :)"
+    ];
+    const target = document.getElementById("typing");
+    const speed = 70;
+    const delay = 1500;
+    let textIndex = 0;
+    let charIndex = 0;
+    function type() {
+        if (charIndex < texts[textIndex].length) {
+            target.textContent += texts[textIndex][charIndex];
+            charIndex++;
+            setTimeout(type, speed);
+        } else {
+            setTimeout(() => {
+                target.textContent = "";
+                charIndex = 0;
+                textIndex++;
+
+                if (textIndex >= texts.length) textIndex = 0;
+                type();
+            }, delay);
+        }
+    }
+    type();
+    });
+    type();
+    </script>
         <header>
             <a href="index.html" class="home">
                 <img src="logo.svg" alt="home">
@@ -195,7 +241,7 @@
         </header>
     <h1>
         <img src="logo+text.svg" width="50%" height="auto" class="logo_text">
-        <p class="introducing">Hi! I am minirang</p>
+        <p class="introducing" id="typing"><!--script에서 타입핑 효과 때문에 비워짐--></p>
         <p class="framework">
             좋아하는 프레임워크
         </p>
