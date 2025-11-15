@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Converter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>File Converter</title>
     <style>
     body{
         background-color: black;
@@ -12,19 +12,20 @@
     header{
         border-bottom: 1.5px  solid whitesmoke;
         background: linear-gradient(135deg,#402f75 0%, #275288 50%, #146849 100%);
+        font-family:serif;
     }
     .home img {
         width:8vh;
         min-width:13%;
         height: auto;
         padding:1px;
+        flex-shrink: 0;
     }
     h1{
         font-size:350%;
         text-align: center;
         padding-top: 5px;
     }
-
     section{
         display: flex;
         justify-content: center;
@@ -40,6 +41,8 @@
         cursor: pointer;
         font-weight: bold;
         font-size:18px;
+        width:27%;
+        text-align: center;
     }
     #convertBtn{
         align-items: center;
@@ -62,6 +65,8 @@
         background-color: black;
         color: white;
         border-bottom: 1.5px solid whitesmoke;
+        overflow: hidden;
+        position: relative;
     }
     header ul {
         list-style: none;
@@ -78,6 +83,8 @@
         cursor: pointer;
         transition: background-color 0.3s, color 0.3s;
         background-color: black;
+        flex: 0 1 auto;
+        max-width: 150px;
     }
     header ul li button a {
         color: white;
@@ -90,12 +97,33 @@
     header ul li button:hover a {
         color: black;
     }
-    footer {
-      margin-top: 250px;
-      text-align: center;
-      color: gray;
-      font-size: 13px;
+    @media (max-width:735px){
+    header{
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 10px;
+        overflow: hidden;
     }
+    header ul{
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    header ul li button{
+        width: 90%;
+        max-width: none;
+        font-size: 16px;
+        flex: 0 1 auto;
+    }
+    .home img{
+        width: 50px;
+        flex-shrink: 0;
+    }
+    h1 ul{
+        flex-direction: column;
+        gap: 10px;
+    }
+}
     </style>
 </head>
     <body>
@@ -111,12 +139,12 @@
                 </li>
                 <li>
                     <button>
-                        <a href="https://minirang.github.io"> HTML 실행기</a>
+                        <a href="code_run.html"> HTML 실행기</a>
                     </button>
                 </li>
                 <li>
                     <button>
-                        <a href="https://minirang.github.io/PDF-to-TXT-Converter.io/">File Converter</a>
+                        <a href="convert.html">File Converter</a>
                     </button>
                 </li>
                 <li>
@@ -179,8 +207,5 @@
             </script>
         </section>
     </div>
-    <footer>
-        © 2025 minirang - website
-    </footer>
 </body>
 </html>
