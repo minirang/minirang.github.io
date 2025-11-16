@@ -3,8 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>minirang's website</title>
-        <link rel="icon" type="image/ico" href="favicon.ico"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"><!--Montserrat-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"><!--Poppins-->
+        <link rel="icon" type="image/ico" href="favicon.ico">
         <link rel="manifest" href="manifest.json">
         <style>
     body{
@@ -13,7 +16,8 @@
     }
     header{
         border-bottom: 1.5px  solid whitesmoke;
-        background: linear-gradient(135deg,#402f75 0%, #275288 50%, #146849 100%);
+        background-color:black;
+        /*그냥 index.html만 헤더 배경 검정으로 그게 더 예뻐보임 나머지는 아님*/
         font-family:serif;
     }
     .home img {
@@ -64,16 +68,21 @@
         background-color:rgb(32, 31, 31);
     }
     .framework{
-        font-family: sans-serif;
+        font-family:sans-serif;
         font-weight:bold;
         text-align: center;
         font-size: 40px;
+        padding-top: 15px;
+        padding-bottom:145px;
+        font-family: 'Montserrat', sans-serif;
     }
     .introducing{
-        padding-top: 4px;
+        padding-top: 6px;
+        padding-bottom: 6px;
         text-align: center;
         font-weight: bold;
-        font-size: 80px;
+        font-size: 72px;
+        font-family: 'Poppins', sans-serif;
         margin-top: -53px;
         background: linear-gradient(45deg, #ff6b6b, #5f27cd);
         /*다른 브라우저 호환 코드 포함*/
@@ -180,8 +189,12 @@
     document.addEventListener("DOMContentLoaded", () => {
     const texts = [
         "Hi! I am minirang",
+        "I am from Korea 🇰🇷",
+        "I am middle school student",
+        "I like to code.",
         "Welcome to my website!",
         "Enjoy your stay :)"
+
     ];
     const target = document.getElementById("typing");
     const speed = 70;
@@ -218,7 +231,7 @@
                 </li>
                 <li>
                     <button>
-                        <a href="code_run.html"> HTML 실행기</a>
+                        <a href="code_run.html">HTML 실행기</a>
                     </button>
                 </li>
                 <li>
@@ -228,7 +241,7 @@
                 </li>
                 <li>
                     <button>
-                        <a href="extensitions.html">Extensitions</a>
+                        <a href="extensitions.html">확장프로그램들</a>
                     </button>
                 </li>
                 <li>
@@ -244,7 +257,6 @@
         <p class="framework">
             좋아하는 프레임워크
         </p>
-        <br>
         <ul>
             <li>
                 <button>HTML
