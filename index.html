@@ -10,7 +10,7 @@
         <link rel="icon" type="image/svg" href="logo.svg">
         <link rel="manifest" href="manifest.json">
         <style>
-    html, body{
+    body{
         background-color: black;
         color:white;
     }
@@ -176,6 +176,26 @@
     .logo_text{
         min-width:350px;
     }
+    .languages {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        padding: 10px 0;
+    }
+    .languages ul {
+        display: inline-flex;
+        gap: 20px;
+        padding: 0 15px;
+        margin: 0;
+    }
+    .languages li {
+        list-style: none;
+    }
+    .languages button {
+        flex-shrink: 0;
+    }
+
     /*@keyframes까지 By GPT*/
     #typing{
         border-right: 4px solid white;
@@ -250,6 +270,11 @@
                 </li>
                 <li>
                     <button>
+                        <a href="https://minirang.github.io/specialcharacters/">특수문자 사이트</a>
+                    </button>
+                </li>
+                <li>
+                    <button>
                         <a href="extensitions.html">확장프로그램들</a>
                     </button>
                 </li>
@@ -268,6 +293,7 @@
         <p class="framework">
             좋아하는 프레임워크
         </p>
+        <div class="languages">
         <ul>
             <li>
                 <button>HTML
@@ -298,6 +324,7 @@
                 </button>
             </li>
         </ul>
+        </div>
     </h1>
     <footer>
         © 2025 minirang - website
